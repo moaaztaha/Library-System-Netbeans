@@ -109,13 +109,25 @@ public class PreUpdateUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int index = Library.isAvailable(Integer.parseInt(jTextField1.getText()), option);
+        try{
+            String input = jTextField1.getText();
+            if (input.length() > 4)
+                throw new IdDigitsException(input);
+            
+            int index = Library.isAvailable(Integer.parseInt(jTextField1.getText()), option);
         if (index == -1)
             JOptionPane.showMessageDialog(this, option+" Not found!!", "Not Found", JOptionPane.WARNING_MESSAGE);
         else
         {
             UpdateUI uUI = new UpdateUI(emp, index, option);
             uUI.setVisible(true);
+        }   
+        } catch (NumberFormatException nfe)
+        {
+            JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE); 
+        } catch (IdDigitsException e)
+        {
+            JOptionPane.showMessageDialog(this, e, "Max id exceeded", JOptionPane.WARNING_MESSAGE); 
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

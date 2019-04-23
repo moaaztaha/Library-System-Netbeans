@@ -38,11 +38,16 @@ public class UpdateUI extends javax.swing.JFrame {
         lWelcome.setText("Update " + option);
         if (option.equals("EMPLOYEE"))
         {
-            fourth.setText("Position");
-            tFirst.setText(Integer.toString(Library.employees.get(index).getId()));
-            tSecond.setText(Library.employees.get(index).getName());
-            tThird.setText(Library.employees.get(index).getMail());
-            tFourth.setText(Library.employees.get(index).getPosition());
+            try{
+                fourth.setText("Position");
+                tFirst.setText(Integer.toString(Library.employees.get(index).getId()));
+                tSecond.setText(Library.employees.get(index).getName());
+                tThird.setText(Library.employees.get(index).getMail());
+                tFourth.setText(Library.employees.get(index).getPosition());   
+            } catch (ArrayIndexOutOfBoundsException e)
+            {
+               JOptionPane.showMessageDialog(this, "Array out of bound!!", "Wrong index", JOptionPane.WARNING_MESSAGE); 
+            }
             
         }
         else if (option.equals("BOOK"))
@@ -53,26 +58,46 @@ public class UpdateUI extends javax.swing.JFrame {
             fifth.setVisible(true);
             tFifth.setVisible(true);
             
-            tFirst.setText(Integer.toString(Library.books.get(index).getIsbn()));
-            tSecond.setText(Library.books.get(index).getName());
-            tThird.setText(Library.books.get(index).getAuthor());
-            tFourth.setText(Library.books.get(index).getCategory());
-            tFifth.setText(Integer.toString(Library.books.get(index).getNoCopy()));
+            try{
+                tFirst.setText(Integer.toString(Library.books.get(index).getIsbn()));
+                tSecond.setText(Library.books.get(index).getName());
+                tThird.setText(Library.books.get(index).getAuthor());
+                tFourth.setText(Library.books.get(index).getCategory());
+                tFifth.setText(Integer.toString(Library.books.get(index).getNoCopy()));
+            } catch (ArrayIndexOutOfBoundsException e)
+            {
+               JOptionPane.showMessageDialog(this, "Array out of bound!!", "Wrong index", JOptionPane.WARNING_MESSAGE); 
+            }
         }
         else if (option.equals("STUDENT"))
         {
-            tFirst.setText(Integer.toString(Library.students.get(index).getId()));
-            tSecond.setText(Library.students.get(index).getName());
-            tThird.setText(Library.students.get(index).getMail());
-            tFourth.setText(Library.students.get(index).getFaclty());
+            try
+            {
+                tFirst.setText(Integer.toString(Library.students.get(index).getId()));
+                tSecond.setText(Library.students.get(index).getName());
+                tThird.setText(Library.students.get(index).getMail());
+                tFourth.setText(Library.students.get(index).getFaclty());
+            } catch (ArrayIndexOutOfBoundsException e)
+            {
+               JOptionPane.showMessageDialog(this, "Array out of bound!!", "Wrong index", JOptionPane.WARNING_MESSAGE); 
+            }
             
         }
         else if (option.equals("PROFESSOR"))
         {
-            tFirst.setText(Integer.toString(Library.professors.get(index).getId()));
-            tSecond.setText(Library.professors.get(index).getName());
-            tThird.setText(Library.professors.get(index).getMail());
-            tFourth.setText(Library.professors.get(index).getFaclty()); 
+            try
+            {
+                tFirst.setText(Integer.toString(Library.professors.get(index).getId()));
+                tSecond.setText(Library.professors.get(index).getName());
+                tThird.setText(Library.professors.get(index).getMail());
+                tFourth.setText(Library.professors.get(index).getFaclty());
+            } catch (ArrayIndexOutOfBoundsException e)
+            {
+               JOptionPane.showMessageDialog(this, "Array out of bound!!", "Wrong index", JOptionPane.WARNING_MESSAGE); 
+            } catch (NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(this, "Id must be a positive number!!", "Wrong index", JOptionPane.WARNING_MESSAGE); 
+            }
         }
     }
 
@@ -231,57 +256,86 @@ public class UpdateUI extends javax.swing.JFrame {
         {
             if (option.equals("BOOK"))
             {
-                Library.books.get(index).setIsbn(Integer.parseInt(tFirst.getText()));
-                Library.books.get(index).setName(tSecond.getText());
-                Library.books.get(index).setCategory(tThird.getText());
-                Library.books.get(index).setCategory(tFourth.getText());
-                Library.books.get(index).setNoCopy(Integer.parseInt(tFifth.getText()));
-                JOptionPane.showMessageDialog(this, "The Book is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
-                try {
-                    Library.saveArray("BOOK");
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                try{
+                    String input = tFirst.getText();
+                    if (input.length() > 4)
+                        throw new IdDigitsException(input);
+                    
+                    Library.books.get(index).setIsbn(Integer.parseInt(tFirst.getText()));
+                    Library.books.get(index).setName(tSecond.getText());
+                    Library.books.get(index).setCategory(tThird.getText());
+                    Library.books.get(index).setCategory(tFourth.getText());
+                    Library.books.get(index).setNoCopy(Integer.parseInt(tFifth.getText()));
+                    JOptionPane.showMessageDialog(this, "The Book is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        Library.saveArray("BOOK");
+                    } catch (IOException ex) {
+                        Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }    
+                } catch (NumberFormatException nfe)
+                {
+                    JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE);    
+                } catch (IdDigitsException e)
+                {
+                    JOptionPane.showMessageDialog(this, e, "Max id exceeded", JOptionPane.WARNING_MESSAGE);
                 }
+                
             }
             else if (option.equals("STUDENT"))
             {
-                Library.students.get(index).setId(Integer.parseInt(tFirst.getText()));
-                Library.students.get(index).setName(tSecond.getText());
-                Library.students.get(index).setMail(tThird.getText());
-                Library.students.get(index).setFaculty(tFourth.getText());
-                JOptionPane.showMessageDialog(this, "The Student is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
-                try {
-                    Library.saveArray("STUDENT");
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                try{
+                    Library.students.get(index).setId(Integer.parseInt(tFirst.getText()));
+                    Library.students.get(index).setName(tSecond.getText());
+                    Library.students.get(index).setMail(tThird.getText());
+                    Library.students.get(index).setFaculty(tFourth.getText());
+                    JOptionPane.showMessageDialog(this, "The Student is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        Library.saveArray("STUDENT");
+                    } catch (IOException ex) {
+                        Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }   
+                } catch (NumberFormatException nfe)
+                {
+                    JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE); 
                 }
             }
             else if (option.equals("PROFESSOR"))
             {
-                Library.professors.get(index).setId(Integer.parseInt(tFirst.getText()));
-                Library.professors.get(index).setName(tSecond.getText());
-                Library.professors.get(index).setMail(tThird.getText());
-                Library.professors.get(index).setFaculty(tFourth.getText());
-                    
-                JOptionPane.showMessageDialog(this, "The Professor is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
-                try {
-                    Library.saveArray("PROFESSOR");
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                try
+                {
+                    Library.professors.get(index).setId(Integer.parseInt(tFirst.getText()));
+                    Library.professors.get(index).setName(tSecond.getText());
+                    Library.professors.get(index).setMail(tThird.getText());
+                    Library.professors.get(index).setFaculty(tFourth.getText());
+
+                    JOptionPane.showMessageDialog(this, "The Professor is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        Library.saveArray("PROFESSOR");
+                    } catch (IOException ex) {
+                        Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }    
+                } catch (NumberFormatException nfe)
+                {
+                    JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE);   
                 }
             }
             else if (option.equals("EMPLOYEE"))
             {
-                
-                Library.employees.get(index).setId(Integer.parseInt(tFirst.getText()));
-                Library.employees.get(index).setName(tSecond.getText());
-                Library.employees.get(index).setMail(tThird.getText());
-                Library.employees.get(index).setPosition(tFourth.getText());
-                JOptionPane.showMessageDialog(this, "The Employee is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
-                try {
-                    Library.saveArray("EMPLOYEE");
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                try
+                {
+                    Library.employees.get(index).setId(Integer.parseInt(tFirst.getText()));
+                    Library.employees.get(index).setName(tSecond.getText());
+                    Library.employees.get(index).setMail(tThird.getText());
+                    Library.employees.get(index).setPosition(tFourth.getText());
+                    JOptionPane.showMessageDialog(this, "The Employee is updated Successfuly.", "Done", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        Library.saveArray("EMPLOYEE");
+                    } catch (IOException ex) {
+                        Logger.getLogger(CreateUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (NumberFormatException nfe)
+                {
+                    JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE);    
                 }
             }
         }

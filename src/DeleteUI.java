@@ -2,11 +2,7 @@
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -24,6 +20,7 @@ public class DeleteUI extends javax.swing.JFrame {
 
     String option;
     Employee emp;
+    DefaultTableModel model;
     /**
      * Creates new form DeleteUI
      */
@@ -44,7 +41,7 @@ public class DeleteUI extends javax.swing.JFrame {
         if (option.equals("STUDENT"))
         {
 
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model = (DefaultTableModel)jTable1.getModel();
             model.addColumn("ID");
             model.addColumn("Name");
             model.addColumn("Mail");
@@ -71,7 +68,7 @@ public class DeleteUI extends javax.swing.JFrame {
         else if (option.equals("PROFESSOR"))
         {
 
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model = (DefaultTableModel)jTable1.getModel();
             model.addColumn("ID");
             model.addColumn("Name");
             model.addColumn("Mail");
@@ -97,7 +94,7 @@ public class DeleteUI extends javax.swing.JFrame {
         else if (option.equals("BOOK"))
         {
 
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model = (DefaultTableModel)jTable1.getModel();
             model.addColumn("ISBN");
             model.addColumn("Name");
             model.addColumn("Author");
@@ -124,7 +121,7 @@ public class DeleteUI extends javax.swing.JFrame {
         else if (option.equals("EMPLOYEE"))
         {
 
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model = (DefaultTableModel)jTable1.getModel();
             model.addColumn("ID");
             model.addColumn("Name");
             model.addColumn("Mail");
@@ -258,16 +255,7 @@ public class DeleteUI extends javax.swing.JFrame {
                 Logger.getLogger(DeleteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (option.equals("STUDENT"))
-        {
-
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.addColumn("ID");
-            model.addColumn("Name");
-            model.addColumn("Mail");
-            model.addColumn("Faculty");
-            model.addColumn("Current");
-            model.addColumn("Max");
-            
+        { 
             model.setRowCount(Library.students.size());
             int row = 0;
             int col;
@@ -286,14 +274,6 @@ public class DeleteUI extends javax.swing.JFrame {
         }
         else if (option.equals("PROFESSOR"))
         {
-
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.addColumn("ID");
-            model.addColumn("Name");
-            model.addColumn("Mail");
-            model.addColumn("Faculty");
-            model.addColumn("Current");
-            model.addColumn("Max");
             model.setRowCount(Library.professors.size());
             int row = 0;
             int col;
@@ -312,14 +292,6 @@ public class DeleteUI extends javax.swing.JFrame {
         }
         else if (option.equals("BOOK"))
         {
-
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.addColumn("ISBN");
-            model.addColumn("Name");
-            model.addColumn("Author");
-            model.addColumn("Category");
-            model.addColumn("Loanable");
-            model.addColumn("Amount");
             
             model.setRowCount(Library.books.size());
             int row = 0;
@@ -339,12 +311,6 @@ public class DeleteUI extends javax.swing.JFrame {
         }
         else if (option.equals("EMPLOYEE"))
         {
-
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.addColumn("ID");
-            model.addColumn("Name");
-            model.addColumn("Mail");
-            model.addColumn("Position");
             
             model.setRowCount(Library.employees.size());
             int row = 0;
