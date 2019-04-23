@@ -1,0 +1,245 @@
+public static void main(String args[])
+	{
+		
+	/*	// Dummy values for testing
+		Book b1 = new Book("The Power of Habit", "moaz", "Fiction", 124, 22);
+		Book b2 = new Book("The Idiot Brain", "omar", "Rmoance", 211, 23);
+		Student s1 = new Student(17588, "moaz175888@bue.edu.eg", "moaz taha", "ICS");
+		Student s3 = new Student(17588, "moaz175888@bue.edu.eg", "moaz taha", "ICS");
+		Student s2 = new Student(18264, "Alaa@gmail.com", "alaa taha", "Engineering");
+		Professor p1 = new Professor(110, "Mostafa@gmail.com", "Mostafa", "ISC");
+		Professor p2 = new Professor(323, "Ghada@gmail.com", "Ghada", "ICS");
+		Employee emp1 = new Employee(145, "Moaz", "moaz@me.com", "Manager");
+		Employee emp2 = new Employee(145, "Moaz", "moaz@me.com", "Manager");
+		String date1 = "01/03/2015";
+		String date2 = "29/12/2015";
+		Borrow record1 = new Borrow(b1.getIsbn(), b1.getName(), s1.getId(), date1);
+		Borrow record2 = new Borrow(b2.getIsbn(), b2.getName(), s1.getId(), date2);
+		
+		Library.books.add(b1);
+		Library.books.add(b2);
+		Library.students.add(s1);
+		Library.students.add(s2);
+		Library.students.add(s3);
+		Library.professors.add(p1);
+		Library.professors.add(p2);
+		Library.employees.add(emp1);
+		Library.employees.add(emp2);
+		Library.records.add(record1);
+		Library.records.add(record2);
+		//
+
+		int i = Library.isAvailable(122, "BOOK");
+		
+		if (i != -1)
+			System.out.println("The obj is Found at index: " + i);
+		else
+			System.out.println("The obj is not found");
+		
+
+		print(Library.professors.size());
+		
+		
+		print(Library.professors.size());
+		print(Library.professors.get(0).getName());
+		
+		
+		Professor p = new Professor(13, "sad@asd.com", "asd", "ICS");
+		//Library.professors.add(p);
+		print(Library.deleteObj(p));
+		print(Library.isAvailable(p));
+		
+
+		
+		print("Student name: " + Library.students.get(Library.students.size()-1).getName());
+		print("Student name: " + Library.students.get(Library.students.size()-1).getName());
+		
+		Library.ListItems("STUDENT");
+		
+		String name = "Moaz taha lasheen";
+		if (name.contains("taha"))
+			System.out.println("Yess");
+	
+		Library.printList(Library.searchByName("power", "book"), "book");
+		
+		
+		print("******************************");
+		print(Library.books.get(0).getNoCopy());
+		Library.updateObj(Library.books.get(0), "nocopy", "123");
+		print(Library.books.get(0).getNoCopy());
+		
+		
+		seperator();
+		Book b4 = new Book("Harry Potter", "GGc", "Fantasy", 456, 13);
+		Library.books.add(b4);
+		print(Library.books.size());
+		print(Library.books.size());
+		
+		seperator();
+		Library.ListItems("Borrow");
+		
+		seperator();
+		
+		print(Library.books.size());
+		Book b0 = new Book("The Idiot Brain", "omar", "Rmoance", 211, 23);
+		Library.employees.get(0).create(b0);
+		print(Library.books.size());
+		
+		
+		seperator();
+		Library.employees.get(0).browse("book");
+		
+		seperator();
+		Library.employees.get(0).browse("Student");
+		seperator();
+		Library.employees.get(0).browse("Professor");
+		
+		seperator();
+		Library.employees.get(0).browse("Borrow");
+		
+		seperator();
+		
+		print(Library.books.size());
+		Library.employees.get(0).delete(124, "BOOK");
+		print(Library.books.size());
+		
+		seperator();
+		
+		print(Library.books.get(0).getName());
+		Library.employees.get(0).update(211, "name", "book", "ali");
+		print(Library.books.get(0).getName());
+		
+		seperator();
+		print(Library.students.get(0).getName());
+		Library.employees.get(0).update(Library.students.get(0).getId(), "name", "student", "ali");
+		print(Library.students.get(0).getName());
+		seperator();
+		
+		print(Library.books.size());
+		print(Library.isAvailable(Library.books.get(0).getIsbn(), "BOOK"));
+		Library.students.get(0).Search(Library.books.get(0).getIsbn());
+
+		seperator();
+		
+		Library.professors.get(0).browse();
+		
+		seperator();
+		Professor p5 = new Professor(110, "Mostafa@gmail.com", "Mostafa", "ISC");
+		Professor p6 = new Professor(323, "Ghada@gmail.com", "Ghada", "ICS");
+		Library.professors.add(p5);
+		Library.professors.add(p6);
+		Library.employees.get(0).searchByName("Ghada", Library.options[2]);
+		Library.employees.get(0).searchByName("moaz", "Student");
+		
+		seperator();
+		// Employee testing
+		Student s4 = new Student(1, "moaz175888@bue.edu.eg", "moaz taha", "ICS");
+		Book b5 = new Book("Steve Jobs", "omar", "Biography", 1, 10);
+		//Borrow record4 = new Borrow(b2.getIsbn(), b2.getName(), s1.getId(), date2);
+		
+		// Create Student
+		print(Library.students.size());
+		Library.employees.get(0).create(s4);
+		print(Library.students.size());
+		
+		// Create Book
+		print(Library.books.size());
+		Library.employees.get(0).create(b5);;
+		print(Library.books.size());
+		
+		// Create Employee
+		Employee emp4 = new Employee(1, "Moaz", "moaz@me.com", "Manager");
+		print(Library.employees.size());
+		Library.employees.get(0).create(emp4);
+		
+		// Delete 
+		print(Library.books.size());
+		Library.employees.get(0).delete(1, "Book");
+		print(Library.books.size());
+		
+		seperator();
+		// User testing
+		
+		// Borrow a book
+		print(Library.books.size());
+		Library.employees.get(0).create(b5);
+		print(Library.books.size());
+		
+		seperator();
+		print(Library.records.size());
+		Library.students.get(Library.students.size() -1).borrowBook(1, date2);
+		print(Library.records.size());
+		// Check the history
+		print(Library.students.get(Library.students.size()-1).getId());
+		
+		
+		Library.students.get(Library.students.size()-1).userHistory();
+		
+		Library.employees.get(0).browse("Student");
+		//Library.employees.get(0).browse("Borrow");
+		//Library.students.get(0).borrowBook(1, date2);
+		
+		
+		//Library.employees.get(0).browse("Borrow");
+		//print(Library.records.size());
+		
+		seperator();
+		
+		// Return testing
+		print(Library.books.get(Library.books.size() -1).getNoCopy());
+		Library.students.get(0).returnBook(1);
+		print(Library.books.get(Library.books.size() -1).getNoCopy());
+		Library.students.get(0).borrowBook(1, date1);
+		print(Library.books.get(Library.books.size() -1).getNoCopy());
+		Library.students.get(0).returnBook(1);
+		print(Library.books.get(Library.books.size() -1).getNoCopy());
+		*/
+		
+		Employee emp = new Employee(1, "moaz", "moaz@gmail.com", "manager");
+		Library.employees.add(emp);
+		String date1 = "01/03/2015";
+		
+		// Create new data to work with
+		Book book = new Book("The idiot brain", "dean burnet", "self", 124, 22);
+		print("books before: " + Library.books.size());
+		Library.employees.get(0).create(book);
+		print("books after: " + Library.books.size());
+		
+		
+
+		
+		
+		Student student = new Student(12, "Alaa@gmail.com", "alaa taha", "Engineering");
+		print("students before: " + Library.students.size());
+		Library.employees.get(0).create(student);
+		print("students after: " + Library.students.size());
+		
+		Professor prof = new Professor(2, "Mostafa@gmail.com", "Mostafa", "ISC");
+		print("profs before: " + Library.professors.size());
+		Library.employees.get(0).create(prof);
+		print("profs after: " + Library.professors.size());
+		
+		print(Library.books.get(0).getNoCopy());
+		//int ii = Library.students.size() -1;
+		Library.students.get(0).userHistory();
+		Library.students.get(0).borrowBook(124, date1);
+		Library.students.get(0).userHistory();
+		print(Library.books.get(0).getNoCopy());
+		Library.students.get(0).returnBook(124);
+		Library.students.get(0).userHistory();
+		print(Library.books.get(0).getNoCopy());
+		
+		
+		seperator();
+		Library.employees.get(0).browse("Borrow");
+		
+		seperator();
+		
+		Library.students.get(0).Search(1);
+		
+		
+		
+		
+	} // end of main
+} // end of project
+
