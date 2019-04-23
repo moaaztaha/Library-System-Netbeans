@@ -145,7 +145,9 @@ and then returns the list
  */
     public ArrayList <Integer> Search(String n){
         ArrayList <Integer> results = Library.searchByName(n, "BOOK");
-        return results;
+        if (results.size() > 0)
+            return results;
+        else return null;
     }
 
     /*

@@ -3,12 +3,16 @@
 import javax.swing.JOptionPane;
 public class ProfessorUI extends javax.swing.JFrame {
     
-
+    Professor p;
     /**
      * Creates new form ProfessorUI
      */
     public ProfessorUI() {
         initComponents();
+    }
+    public ProfessorUI(Professor p) {
+        initComponents();
+        this.p = p;
     }
 
     /**
@@ -101,7 +105,7 @@ public class ProfessorUI extends javax.swing.JFrame {
             throw(n);
         }else{
         SearchResultUI form2;
-        form2 = new SearchResultUI(input);
+        form2 = new SearchResultUI(p, input);
         form2.setVisible(true);
          this.dispose();
         }

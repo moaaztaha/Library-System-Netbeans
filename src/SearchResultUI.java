@@ -2,23 +2,21 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 public class SearchResultUI extends javax.swing.JFrame {
 Professor instructor;
-    /**
+/**
      * Creates new form SearchResultUI
      */
-    public SearchResultUI() {
+    
+     public SearchResultUI(Professor p,String input){
         initComponents();
-    }
-     public SearchResultUI(String input){
-        initComponents();
+        this.instructor = p;
         try{
-        instructor = new Professor();
         String data = " ";
         ArrayList <Integer> viola = instructor.Search(input);//gets array list from the search function which gets indeces of items related to your search
         for(int i:viola){
             data=data + Library.books.get(i).toString();
         }
         jTextArea1.setText(data);
-        }catch(IndexOutOfBoundsException    e){
+        }catch(NullPointerException e){
              jTextArea1.setText("no results...");
         }
         
@@ -307,40 +305,6 @@ Professor instructor;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchResultUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchResultUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchResultUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchResultUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SearchResultUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
