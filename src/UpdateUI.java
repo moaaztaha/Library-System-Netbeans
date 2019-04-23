@@ -338,6 +338,11 @@ public class UpdateUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Your input must be a positive number", "Not interger Error", JOptionPane.WARNING_MESSAGE);    
                 }
             }
+            try {
+                Library.saveArray(option);
+            } catch (IOException ex) {
+                Logger.getLogger(UpdateUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_bAddActionPerformed
 

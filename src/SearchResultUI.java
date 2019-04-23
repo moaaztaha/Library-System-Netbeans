@@ -1,4 +1,7 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 public class SearchResultUI extends javax.swing.JFrame {
 Professor instructor;
@@ -261,14 +264,17 @@ Professor instructor;
             throw(n);
          }
          instructor.borrowBook(isbn, startDate);//calling the function
+         Library.saveArray("BORROW");
+         Library.saveArray("PROFESSOR");
+         Library.saveArray("BOOK");
          JOptionPane.showMessageDialog(this, "Borrow operation successful! Enjoy your Book !");
         } catch(IllegalArgumentException e){
           JOptionPane.showMessageDialog(this,"Something was wrong with your input","Error",JOptionPane.WARNING_MESSAGE);
         }catch(NoInputException d){
             JOptionPane.showMessageDialog(this,d.noDate,"Error",JOptionPane.WARNING_MESSAGE);
-        }
-   
-        //Library.saveAllData();
+        } catch (IOException ex) {
+        Logger.getLogger(SearchResultUI.class.getName()).log(Level.SEVERE, null, ex);
+    }
    
     }//GEN-LAST:event_BorrowActionPerformed
 
@@ -280,10 +286,15 @@ Professor instructor;
          number = jTextField3.getText();
          isbn = Integer.parseInt(number);
          instructor.returnBook(isbn);
+         Library.saveArray("BORROW");
+         Library.saveArray("PROFESSOR");
+         Library.saveArray("BOOK");
          JOptionPane.showMessageDialog(this,"Return operation successful! Thank you! ");
         }catch(IllegalArgumentException e){
              JOptionPane.showMessageDialog(this,"Something was wrong with your input","Error",JOptionPane.WARNING_MESSAGE);
-        }
+        } catch (IOException ex) {
+        Logger.getLogger(SearchResultUI.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_ReturnActionPerformed
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked

@@ -1,5 +1,8 @@
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -155,10 +158,15 @@ Student st;
         selectedtxt = Integer.parseInt(txt);
         String Date = JOptionPane.showInputDialog("Enter today's date: ");
         st.borrowBook(selectedtxt, Date);
+        Library.saveArray("STUDENT");
+        Library.saveArray("BOOK");
+        Library.saveArray("BORROW");
         JOptionPane.showMessageDialog(this, "You have succesfully borrowed this book");
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null,"You have selected a wrong line","Wrong Line",JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (IOException ex) {
+        Logger.getLogger(studentResult.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_borrowBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
@@ -168,9 +176,14 @@ Student st;
              txt = displayArea.getSelectedText();
              selectedtxt = Integer.parseInt(txt);
              st.returnBook(selectedtxt);
+             Library.saveArray("STUDENT");
+             Library.saveArray("BOOK");
+             Library.saveArray("BORROW");
              JOptionPane.showMessageDialog(this, "You have returned this book");  
             }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null,"You have selected a wrong line","Wrong Line",JOptionPane.ERROR_MESSAGE);
+    } catch (IOException ex) {
+        Logger.getLogger(studentResult.class.getName()).log(Level.SEVERE, null, ex);
     }//GEN-LAST:event_returnBtnActionPerformed
   }
 

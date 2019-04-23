@@ -1,4 +1,7 @@
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -177,9 +180,14 @@ public class borrowUI extends javax.swing.JFrame {
         String txt2 = dateField.getText();
         txt2 = testDate(txt2);
         stu.borrowBook(enteredText, txt2);
+        Library.saveArray("BORROW");
+        Library.saveArray("STUDENT");
+        Library.saveArray("BOOK");
         JOptionPane.showMessageDialog(this, "You have succesfully borrowed this book");
         }catch(WrongDateFormatException e){
            System.out.println(e.message); 
+        } catch (IOException ex) {
+            Logger.getLogger(borrowUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_borrowBtnActionPerformed
 
@@ -194,6 +202,13 @@ public class borrowUI extends javax.swing.JFrame {
         int enteredText = Integer.parseInt(txt);
 
         stu.returnBook(enteredText);
+        try {
+            Library.saveArray("STUDENT");
+            Library.saveArray("BOOK");
+            Library.saveArray("BORROW");
+        } catch (IOException ex) {
+            Logger.getLogger(borrowUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(this, "You have returned this book");
     }//GEN-LAST:event_returnBtnActionPerformed
 
