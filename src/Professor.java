@@ -1,5 +1,6 @@
 
 public class Professor extends User {
+    static final long serialVersionUID = 40L;
 	Professor()
 	{
 		super();

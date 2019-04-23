@@ -1,6 +1,6 @@
 
 public class Student extends User {
-	 
+	 static final long serialVersionUID = 40L;
 	 Student(int id, String mail, String name, String faclty, String password)
 	 {
 		 super(id, mail, name, faclty, 3, password);

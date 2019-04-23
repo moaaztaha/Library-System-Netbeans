@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Book implements Serializable {
     private String name,author,category; //commonly used 
     private int isbn,noCopy; // commonly used
+    static final long serialVersionUID = 40L;//
 
     public Book() {
         name = " "; author = " "; category = " ";

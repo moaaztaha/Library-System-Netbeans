@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 public class Borrow implements Serializable{
-
+    static final long serialVersionUID = 41L;
     private int isbn;
     private String name;
     private int id;

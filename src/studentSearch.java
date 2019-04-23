@@ -18,11 +18,6 @@ public class studentSearch extends javax.swing.JFrame {
      */
    
     Student stu;
-
-    
-    public studentSearch() {
-        initComponents();     
-    }
     
     public studentSearch(Student s) {
         initComponents();
@@ -143,7 +138,7 @@ public class studentSearch extends javax.swing.JFrame {
        // res = stu.Search(text);
 
         ArrayList <Integer> results = Library.searchByName(text, "BOOK");
-        studentResult sr = new studentResult(results);
+        studentResult sr = new studentResult(stu, results);
         
         sr.setVisible(true);
         

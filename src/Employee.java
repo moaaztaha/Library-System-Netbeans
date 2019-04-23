@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Employee extends Person {
-	
+        static final long serialVersionUID = 42L;
 	private String position;
 	
 	Employee()

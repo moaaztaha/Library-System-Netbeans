@@ -14,8 +14,8 @@ public class Library {
 	Library() throws IOException, FileNotFoundException, ClassNotFoundException
 	{
             // Get all the data from the files
-            //getAllData();
-            
+            getAllData();
+            /*
 		// Dummy values for testing
 		// Dummy data for testing
 		// create employee
@@ -85,7 +85,7 @@ public class Library {
 		Library.students.get(0).borrowBook(3, "21/09/2017");
 		
 		
-		saveAllData();
+		saveAllData();*/
 		
 		
 		
