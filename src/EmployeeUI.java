@@ -440,10 +440,6 @@ public class EmployeeUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void empLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empLogoutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_empLogoutActionPerformed
-
     private void bBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBrowseActionPerformed
         // TODO add your handling code here:
        jOptionHelp.setText("Choose which List to browse:");
@@ -645,6 +641,13 @@ public class EmployeeUI extends javax.swing.JFrame {
         rBook.setVisible(false);
     }//GEN-LAST:event_bHistroyActionPerformed
 
+    private void empLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empLogoutActionPerformed
+        // TODO add your handling code here:
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_empLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBrowse;
@@ -657,6 +660,8 @@ public class EmployeeUI extends javax.swing.JFrame {
     private javax.swing.JButton empLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jOptionHelp;
+    private javax.swing.JButton jbtnlogin;
+    private javax.swing.JButton jbtnlogin1;
     private javax.swing.JLabel lWelcome;
     private javax.swing.ButtonGroup listOptions;
     private javax.swing.JPanel pMenu;

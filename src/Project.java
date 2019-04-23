@@ -7,15 +7,18 @@ public class Project {
 		// For testing create a class of Library
 		Library l = new Library();
                 
-		//EmployeeUI empUI = new EmployeeUI(l.employees.get(0));
+               //EmployeeUI empUI = new EmployeeUI(l.employees.get(0));
                //empUI.setVisible(true); 
                 
                 //StudentUI sUI = new StudentUI(l.students.get(0));
                 //sUI.setVisible(true);
-                ProfessorUI pUI = new ProfessorUI(l.professors.get(0));
-                pUI.setVisible(true);
+                //ProfessorUI pUI = new ProfessorUI(l.professors.get(0));
+                //pUI.setVisible(true);
                 
-		
+                //Login ll = new Login();
+                //ll.setVisible(true);
+		Menu mUI = new Menu();
+                mUI.setVisible(true);
 		
 		
 	} // end of main

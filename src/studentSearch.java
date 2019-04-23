@@ -148,7 +148,7 @@ public class studentSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        StudentUI stUI = new StudentUI();
+        StudentUI stUI = new StudentUI(stu);
         stUI.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed

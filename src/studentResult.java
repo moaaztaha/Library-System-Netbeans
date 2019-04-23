@@ -145,7 +145,7 @@ Student st;
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnActionPerformed
-        StudentUI stUI = new StudentUI();
+        StudentUI stUI = new StudentUI(st);
         stUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuBtnActionPerformed

@@ -192,7 +192,7 @@ public class borrowUI extends javax.swing.JFrame {
     }//GEN-LAST:event_borrowBtnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        StudentUI sUI = new StudentUI();
+        StudentUI sUI = new StudentUI(stu);
         sUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
