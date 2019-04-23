@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dell
@@ -115,12 +116,20 @@ public class Search extends javax.swing.JFrame {
 
     private void jbtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSearchActionPerformed
         String str = jbtnTextField.getText();
+            
         ArrayList<Integer> list = Library.searchByName(str, "BOOK");
-        String info = " ";   //ely hntba3 gwaha feha
-        for(int i : list ){
-            info += Library.books.get(i).toString(); //assign kol el klam l el string el fady.
+        try{
+            if(list.isEmpty()){
+                throw new MisMatchResultsException();
+            }
+            String info = " ";   //ely hntba3 gwaha feha
+            for(int i : list ){
+               info += Library.books.get(i).toString(); //assign kol el klam l el string el fady.
+            }
+            jbtnTextArea.setText(info);   
+        }catch(MisMatchResultsException m){
+            JOptionPane.showMessageDialog(this, m.str, "ERROR INVALID", JOptionPane.WARNING_MESSAGE);
         }
-        jbtnTextArea.setText(info);
     }//GEN-LAST:event_jbtnSearchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
